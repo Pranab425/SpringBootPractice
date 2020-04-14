@@ -5,6 +5,7 @@
  */
 package com.employees.management.userDetails;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,9 +27,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name = "users")
-public class Users {
+public class Users implements Serializable{
     @Id
-//    @GeneratedValue(strategy=GenerationType.AUTO, generator="users")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
     @Column(name = "firstname")
@@ -43,7 +44,7 @@ public class Users {
     @Column(name = "dateofjoining")
     private Date dateOfJoining;
     
-    @OneToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "addressid")
     private Address address;
 

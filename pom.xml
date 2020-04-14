@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.employees</groupId>
-	<artifactId>management</artifactId>
+	<artifactId>SpringBootPractice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>management</name>
+	<name>SpringBootPractice</name>
 	<description>Simple project for REST API services</description>
 
 	<properties>

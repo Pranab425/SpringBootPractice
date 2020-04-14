@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 @Table(name = "address")
 public class Address {
     @Id
-//    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="address")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
     @Column(name = "housenumber")
