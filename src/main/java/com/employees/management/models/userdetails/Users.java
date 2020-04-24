@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.employees.management.userDetails;
+package com.employees.management.models.userdetails;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -47,7 +47,7 @@ public class Users implements Serializable{
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "addressid")
     private Address address;
-
+    
     public Address getAddress() {
         return address;
     }

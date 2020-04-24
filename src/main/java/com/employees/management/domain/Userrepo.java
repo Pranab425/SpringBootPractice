@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.employees.management;
+package com.employees.management.domain;
 
-import com.employees.management.userDetails.Address;
-import com.employees.management.userDetails.Users;
+import com.employees.management.models.userdetails.Users;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author proje
  */
-public interface UserRepo extends CrudRepository<Users, Integer>{
+public interface Userrepo extends CrudRepository<Users, Integer>{
     
 }
