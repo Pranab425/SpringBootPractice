@@ -7,6 +7,9 @@ package com.employees.management.service;
 
 import com.employees.management.domain.Userrepo;
 import com.employees.management.models.userdetails.Users;
+import com.employees.management.service.impl.DeveloperSummaryService;
+import com.employees.management.service.impl.ManagerSummaryService;
+import com.employees.management.service.impl.SalesmanSummaryService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,12 @@ public class UserService {
 
     @Autowired
     private Userrepo userrepo;
+    
+    private DeveloperSummaryService developerSummaryService;
+    
+    private ManagerSummaryService managerServiceSummary;
+    
+    private SalesmanSummaryService salesmanSummaryService;
 
     public Iterable<Users> deleteUser(Integer id) {
         if (userrepo.existsById(id)) {
@@ -48,5 +57,35 @@ public class UserService {
         Optional<Users> userId = userrepo.findById(id);
         userId.get().setFirstName(name);
         return userrepo.save(userId.get());
+    }
+    
+    
+    private EmployeeSummary getEmployeeSummary(String userType){
+        
+        switch(userType){
+            case "developer":
+                return developerSummaryService;
+                
+            case "manager":
+                return managerServiceSummary;
+                    
+            case "salesman":
+                return salesmanSummaryService;
+                
+            default:
+                return null;
+        }
+    }
+    
+    public String getUserSummary(Integer id){
+        Optional<Users> userData = userrepo.findById(id);
+        if(userData == null){
+            throw new RuntimeException("User not found");
+        }
+         EmployeeSummary employeeSummary = getEmployeeSummary(userData.get().getUserType());
+         if(employeeSummary ==null){
+             throw new RuntimeException("User type not found");
+         }
+         return employeeSummary.getSummary();
     }
 }

@@ -48,6 +48,13 @@ public class Users implements Serializable{
     @JoinColumn(name = "addressid")
     private Address address;
     
+    @Column(name = "usertype")
+    private String userType;
+
+    public String getUserType() {
+        return userType;
+    }
+    
     public Address getAddress() {
         return address;
     }
