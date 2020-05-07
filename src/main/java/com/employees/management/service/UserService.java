@@ -90,7 +90,6 @@ public class UserService {
             throw new RuntimeException("User not found");
         }
         EmployeeSummary employeeSummary = this.getEmployeeSummary(userData.get().getUserType());
-        System.out.println(employeeSummary);
         if(employeeSummary ==null){
             throw new RuntimeException("User type not found");
         }
