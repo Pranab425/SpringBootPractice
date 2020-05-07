@@ -30,7 +30,8 @@ import org.springframework.stereotype.Component;
 public class Users implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    //@OneToOne(cascade = CascadeType.ALL)
+    private Integer id;
     
     @Column(name = "firstname")
     private String firstName;
@@ -63,11 +64,11 @@ public class Users implements Serializable{
         this.address = address;
     }
     
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

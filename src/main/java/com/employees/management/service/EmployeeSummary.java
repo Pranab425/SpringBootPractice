@@ -5,10 +5,12 @@
  */
 package com.employees.management.service;
 
+import java.util.Optional;
+
 /**
  *
  * @author proje
  */
 public interface EmployeeSummary {
-    abstract String getSummary();
+    abstract String getSummary(Integer id);
 }

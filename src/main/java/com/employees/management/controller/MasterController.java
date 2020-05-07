@@ -41,6 +41,7 @@ public class MasterController implements Serializable{
             return ResponseEntity.ok(userservice.addUser(users));
         }
         catch(RuntimeException e){
+            e.printStackTrace();
             return ResponseEntity.status(400).body(e.getMessage());
         }
         catch(Exception e){

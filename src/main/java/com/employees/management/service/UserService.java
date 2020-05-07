@@ -25,10 +25,13 @@ public class UserService {
     @Autowired
     private Userrepo userrepo;
     
+    @Autowired
     private DeveloperSummaryService developerSummaryService;
     
+    @Autowired
     private ManagerSummaryService managerServiceSummary;
     
+    @Autowired
     private SalesmanSummaryService salesmanSummaryService;
 
     public Iterable<Users> deleteUser(Integer id) {
@@ -64,15 +67,19 @@ public class UserService {
         
         switch(userType){
             case "developer":
+                System.out.println("dev mila" + userType);
                 return developerSummaryService;
                 
             case "manager":
+                System.out.println("manager mila" + userType);
                 return managerServiceSummary;
                     
             case "salesman":
+                System.out.println("salesman mila" + userType);
                 return salesmanSummaryService;
                 
             default:
+                System.out.println("kuch nhi mila" + userType);
                 return null;
         }
     }
@@ -82,10 +89,11 @@ public class UserService {
         if(userData == null){
             throw new RuntimeException("User not found");
         }
-         EmployeeSummary employeeSummary = getEmployeeSummary(userData.get().getUserType());
-         if(employeeSummary ==null){
-             throw new RuntimeException("User type not found");
-         }
-         return employeeSummary.getSummary();
+        EmployeeSummary employeeSummary = this.getEmployeeSummary(userData.get().getUserType());
+        System.out.println(employeeSummary);
+        if(employeeSummary ==null){
+            throw new RuntimeException("User type not found");
+        }
+        return employeeSummary.getSummary(id);
     }
 }

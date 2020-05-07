@@ -6,6 +6,7 @@
 package com.employees.management.domain;
 
 import com.employees.management.models.employeesummary.SalesmanSummary;
+import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,5 +14,6 @@ import org.springframework.data.repository.CrudRepository;
  * @author proje
  */
 public interface SalesmanSummaryrepo extends CrudRepository<SalesmanSummary, Integer>{
-    
+    @Query(value = "select * from salessummary where userid = ?1")
+    SalesmanSummary findByUserid(Integer userid);
 }

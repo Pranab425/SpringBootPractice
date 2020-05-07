@@ -5,7 +5,10 @@
  */
 package com.employees.management.models.employeesummary;
 
+import com.employees.management.models.userdetails.Users;
 import java.io.Serializable;
+import java.sql.PreparedStatement;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +16,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.springframework.stereotype.Component;
@@ -36,9 +38,18 @@ public class DeveloperSummary implements Serializable{
     @Column(name = "taskname")
     private String taskName;
     
-    @OneToMany(cascade = CascadeType.ALL)
+    //@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userid")
+    //@Column(name = "userid")
     private Integer userid;
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
 
     public Integer getId() {
         return id;
@@ -64,18 +75,8 @@ public class DeveloperSummary implements Serializable{
         this.taskName = taskName;
     }
 
-    public Integer getUserid() {
-        return userid;
-    }
-
-    public void setUserid(Integer userid) {
-        this.userid = userid;
-    }
-
     @Override
     public String toString() {
         return "DeveloperSummary{" + "id=" + id + ", moduleName=" + moduleName + ", taskName=" + taskName + ", userid=" + userid + '}';
-    }
-    
-    
+    }   
 }
